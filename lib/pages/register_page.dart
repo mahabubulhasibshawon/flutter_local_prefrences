@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:local_prefrences/routes/routes.dart';
+import '../controller/auth_controller.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
 
+  final _controller = AuthController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +48,9 @@ class RegisterPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20,),
-          ElevatedButton(onPressed: (){}, child: Text('Register'),),
+          ElevatedButton(onPressed: ()async{
+            await _controller.
+          }, child: Text('Register'),),
         ],
       ),
     );
