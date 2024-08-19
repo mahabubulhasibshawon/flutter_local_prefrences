@@ -19,7 +19,7 @@ class AuthController {
     await LocalPreferences.setString("userName", rUsernameContrller.text);
     await LocalPreferences.setString("password", rPasswordContrller.text);
 
-    context.go(Routes.login);
+    context.go(Routes.home);
   }
 
   Future login(BuildContext context) async {

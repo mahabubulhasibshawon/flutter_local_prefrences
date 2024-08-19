@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:local_prefrences/controller/auth_controller.dart';
 
 import '../routes/routes.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final _controller = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +25,13 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 20,),
             TextFormField(
+              controller: _controller.lUsernameController,
               decoration: const InputDecoration(
                 label: Text('Username'),
               ),
             ),
             TextFormField(
+              controller: _controller.lPasswordController,
               obscureText: true,
               decoration: const InputDecoration(
                 label: Text('Password'),
@@ -40,7 +45,9 @@ class LoginPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 20,),
-            ElevatedButton(onPressed: (){}, child: const Text('Login')),
+            ElevatedButton(onPressed: ()async{
+              await _controller.login(context);
+            }, child: const Text('Login')),
           ],
         ),
       ),

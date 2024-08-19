@@ -11,47 +11,54 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registration'),
+        title: const Text('Registration'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Text('Create a new account', style: Theme.of(context).textTheme.bodyLarge,),
-          const SizedBox(height: 20,),
-          TextFormField(
-            decoration: const InputDecoration(
-              label: Text('Full Name'),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Text('Create a new account', style: Theme.of(context).textTheme.bodyLarge,),
+            const SizedBox(height: 20,),
+            TextFormField(
+              controller: _controller.rFullNameContrller,
+              decoration: const InputDecoration(
+                label: Text('Full Name'),
+              ),
             ),
-          ),
-          const SizedBox(height: 20,),
-          TextFormField(
-            decoration: const InputDecoration(
-              label: Text('Email'),
+            const SizedBox(height: 20,),
+            TextFormField(
+              controller: _controller.rEmailContrller,
+              decoration: const InputDecoration(
+                label: Text('Email'),
+              ),
             ),
-          ),
-          const SizedBox(height: 20,),
-          TextFormField(
-            decoration: const InputDecoration(
-              label: Text('username'),
+            const SizedBox(height: 20,),
+            TextFormField(
+              controller: _controller.rUsernameContrller,
+              decoration: const InputDecoration(
+                label: Text('username'),
+              ),
             ),
-          ),
-          const SizedBox(height: 20,),
-          TextFormField(
-            decoration: const InputDecoration(
-              label: Text('Password'),
+            const SizedBox(height: 20,),
+            TextFormField(
+              controller: _controller.rPasswordContrller,
+              decoration: const InputDecoration(
+                label: Text('Password'),
+              ),
             ),
-          ),
-          Row(
-            children: [
-              Text('Already have an account?'),
-              TextButton(onPressed: ()=>context.go(Routes.login), child: Text('Login'),),
-            ],
-          ),
-          const SizedBox(height: 20,),
-          ElevatedButton(onPressed: ()async{
-            await _controller.
-          }, child: Text('Register'),),
-        ],
+            Row(
+              children: [
+                const Text('Already have an account?'),
+                TextButton(onPressed: ()=>context.go(Routes.login), child: const Text('Login'),),
+              ],
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(onPressed: ()async{
+              await _controller.registerAccount(context);
+            }, child: const Text('Register'),),
+          ],
+        ),
       ),
     );
   }
